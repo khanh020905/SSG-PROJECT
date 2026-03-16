@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import heroVideo from "../assets/video/Eyeglasses_floating_in_midair_delpmaspu_.mp4";
 import GradientText from "./GradientText";
+import BlurText from "./BlurText";
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -34,43 +35,45 @@ export default function HeroSection() {
       {/* Hero Content */}
       <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-8 md:px-16 lg:px-24 w-full">
         {/* Main Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.5,
-            duration: 0.7,
-            ease: [0.25, 0.46, 0.45, 0.94],
-          }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-6 whitespace-nowrap"
-        >
-          Gọng Kính{" "}
-          <GradientText
-            colors={["#0ea5e9", "#22d3ee", "#2dd4bf", "#0ea5e9"]}
-            animationSpeed={6}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold"
+        <div className="flex flex-wrap items-center justify-center gap-x-[0.25em] text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6 md:whitespace-nowrap">
+          <BlurText
+            text="Gọng Kính"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="text-white m-0"
+          />
+          <motion.div
+            initial={{ filter: "blur(10px)", opacity: 0, y: -50 }}
+            animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="m-0"
           >
-            Đổi Màu
-          </GradientText>
-        </motion.h1>
+            <GradientText
+              colors={["#38bdf8", "#a78bfa", "#34d399", "#f472b6", "#38bdf8"]}
+              animationSpeed={4}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold inline-block"
+            >
+              Đổi Màu
+            </GradientText>
+          </motion.div>
+        </div>
 
         {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-xl md:text-2xl text-white/70 font-light tracking-wide mb-14 max-w-2xl"
-        >
-          Thay đổi tương lai — Gọng kính thông minh thích ứng với mọi điều kiện
-          ánh sáng.
-        </motion.p>
+        <BlurText
+          text="Thay đổi tương lai — Gọng kính thông minh thích ứng với mọi điều kiện ánh sáng."
+          delay={50}
+          animateBy="words"
+          direction="top"
+          className="text-xl md:text-2xl text-white/70 font-light tracking-wide mb-14 max-w-2xl justify-center"
+        />
 
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.6 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-wrap gap-4 justify-center items-center"
         >
           <motion.button
             whileHover={{
@@ -78,9 +81,9 @@ export default function HeroSection() {
               boxShadow: "0 0 40px rgba(14, 165, 233, 0.4)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 text-white font-semibold rounded-xl shadow-lg shadow-sky-500/20 cursor-pointer transition-all text-lg animate-[gradientShift_4s_ease_infinite] bg-[length:200%_200%]"
+            className="px-8 py-4 text-white font-semibold rounded-xl shadow-lg shadow-violet-500/25 cursor-pointer transition-all text-lg animate-[gradientShift_3s_ease_infinite] bg-[length:200%_200%]"
             style={{
-              backgroundImage: "linear-gradient(135deg, #0369a1, #0ea5e9, #06b6d4, #0369a1)",
+              backgroundImage: "linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b, #7c3aed)",
             }}
           >
             Khám Phá Ngay

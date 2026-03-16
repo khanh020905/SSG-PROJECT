@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+html, body, #root {
+  background-color: #060a10;
+  color: white;
+  scroll-behavior: smooth;
+}
+
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
